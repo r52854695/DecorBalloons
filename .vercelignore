@@ -1,0 +1,8 @@
+# Build output and local caches — Vercel builds from source.
+.next
+node_modules
+.playwright-mcp
+*.log
+.drive-manifest.json
+# Generated at build time by scripts/build-scenes.mjs (prebuild).
+public/scenes

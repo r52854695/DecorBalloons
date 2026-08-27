@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    Favicon. Deliberately a single balloon rather than the full logo emblem:
+    the client's mark is a circular lockup containing a wordmark that is
+    illegible below ~80px, so at 16px it would render as a smudge. A simple
+    rose-gold balloon on the brand's navy stays readable at every tab size.
+  -->
+  <rect width="64" height="64" rx="14" fill="#101D30"/>
+  <defs>
+    <radialGradient id="b" cx="34%" cy="28%" r="78%">
+      <stop offset="0%" stop-color="#EFC3A6"/>
+      <stop offset="52%" stop-color="#C0805F"/>
+      <stop offset="100%" stop-color="#8E5740"/>
+    </radialGradient>
+  </defs>
+  <path d="M32 12 C40 12 45 18 45 25 C45 33 39 40 32 42 C25 40 19 33 19 25 C19 18 24 12 32 12 Z" fill="url(#b)"/>
+  <path d="M29 42 L35 42 L32 47 Z" fill="#8E5740"/>
+  <path d="M32 47 q4 6 1 10" fill="none" stroke="#C0805F" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="27" cy="21" rx="3.4" ry="4.8" fill="#fff" opacity="0.38" transform="rotate(-22 27 21)"/>
+</svg>
