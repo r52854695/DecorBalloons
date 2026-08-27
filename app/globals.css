@@ -260,3 +260,32 @@
     scroll-behavior: auto !important;
   }
 }
+
+/*
+ * Mega-menu preview accent.
+ *
+ * Deliberately a CSS animation rather than a Motion one. An infinitely
+ * repeating Motion animation inside a subtree that AnimatePresence is managing
+ * never settles, which stalls `mode="wait"` swaps (the preview froze on the
+ * first photograph) and delays the drawer's unmount by well over a second.
+ * CSS keeps it off Motion's animation graph entirely, and on the compositor.
+ */
+@keyframes mm-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.mm-drift {
+  animation: mm-drift 6.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mm-drift {
+    animation: none;
+  }
+}
