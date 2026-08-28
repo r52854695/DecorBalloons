@@ -340,3 +340,34 @@ export const collections: Collection[] = [
 export const distinctThemes = [
   ...new Set(categories.flatMap((c) => c.themes ?? [])),
 ].sort();
+
+
+/**
+ * The categories that get a full shelf on the homepage.
+ *
+ * Six rather than all eleven: each row costs images and DOM on a page that has
+ * to work on a mid-range phone over mobile data, and eleven shelves is more
+ * than anyone scrolls before deciding. These six carry the most enquiry intent
+ * for a Patna studio — birthdays and kids' parties are the volume, annaprashan
+ * is regionally specific and a genuine differentiator, and room decoration is
+ * the surprise/romantic work.
+ *
+ * The other five are NOT hidden: they keep their own pages, sit in the tile
+ * strip at the top, appear in the mega menu, and are listed again under the
+ * rows. Nothing is dropped from the sitemap.
+ */
+const HOME_SLUGS = [
+  "birthday-decoration",
+  "kids-birthday",
+  "anniversary",
+  "baby-shower",
+  "annaprashan",
+  "room-decoration",
+];
+
+export const homeCategories = HOME_SLUGS.map(
+  (slug) => categories.find((c) => c.slug === slug)!,
+).filter(Boolean);
+
+/** Everything not given a shelf on the homepage, for the "more" strip. */
+export const otherCategories = categories.filter((c) => !HOME_SLUGS.includes(c.slug));

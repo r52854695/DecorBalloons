@@ -4,6 +4,7 @@ import { CatalogHero } from "@/components/catalog/CatalogHero";
 import { CategoryRow } from "@/components/catalog/CategoryRow";
 import { CollectionBand } from "@/components/catalog/CollectionBand";
 import { ShelfFilterStyles } from "@/components/catalog/ShelfFilterStyles";
+import { MoreCategories } from "@/components/catalog/MoreCategories";
 import { TrustStrip } from "@/components/catalog/TrustStrip";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -15,7 +16,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, jsonLd } from "@/lib/seo/schema";
 import { generalFaqs } from "@/data/faqs";
-import { categories, collections } from "@/data/catalog";
+import { collections, homeCategories } from "@/data/catalog";
 import { business } from "@/data/business";
 
 export const metadata: Metadata = buildMetadata({
@@ -53,21 +54,24 @@ export default function HomePage() {
       <CatalogHero />
       <TrustStrip />
 
-      {/* Collection bands are interleaved rather than stacked at the end: a
-          dozen identical shelves in a row is exactly the "template" feel the
-          client pushed back on, and each band lands right after the rows it
-          relates to. */}
-      {categories.map((c, i) => (
+      {/* Six shelves, not eleven: each row costs images and DOM on a phone,
+          and nobody scrolls eleven. The other five categories keep their pages
+          and are listed under the rows. The kids band still lands right after
+          the row it belongs to. */}
+      {homeCategories.map((c, i) => (
         <div key={c.slug}>
           <CategoryRow category={c} priority={i === 0} limit={4} />
           {c.slug === "kids-birthday" && (
             <CollectionBand collection={collections[0]} />
           )}
-          {c.slug === "bride-to-be" && (
-            <CollectionBand collection={collections[1]} />
-          )}
         </div>
       ))}
+
+      {/* The wedding band used to follow the Bride To Be row, which no longer
+          has a shelf here. It runs after the rows instead, where it doubles as
+          the way into the wedding-side categories. */}
+      <CollectionBand collection={collections[1]} />
+      <MoreCategories />
 
       <TrustSection />
       <HowItWorks />
