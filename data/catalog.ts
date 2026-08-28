@@ -25,6 +25,13 @@
  * cars on "Car Decoration" and a desert rock arch in the catalogue. Do not add
  * an image here without opening it.
  *
+ * No photograph with a customer's name visible on the backdrop is used on a
+ * product card. Names belong to those families, not to a price list, and a
+ * card selling "First Birthday Setup" should not carry another child's name.
+ * The gallery still shows the work as shot. Two kids themes — Unicorn and
+ * Space — were retired because every photograph of them carried a name;
+ * Football and Aeroplane replaced them, and both have clean work.
+ *
  * Car Decoration and Balloon Bouquets were removed for the same reason: no
  * usable photography exists for them yet, in the studio's library or on Pexels.
  * A category illustrated by the wrong thing is worse than one that is absent.
@@ -109,7 +116,7 @@ export const categories: Category[] = [
       p("home-birthday-setup", "Home Birthday Decoration", 3199, 4299, "2.5 hr", "/images/decor/birthday/birthday-09.jpg", "Most Loved", "Premium"),
       p("adult-birthday-setup", "Adult Birthday Decoration", 2500, 3500, "2 hr", "/images/decor/adult/adult-12.jpg", "Best Seller", "Simple"),
       p("canopy-birthday", "Canopy Birthday Decoration", 3899, 4999, "2.5 hr", "/images/decor/surprise-birthday/surprise-birthday-02.jpg", "Trending", "Canopy"),
-      p("stage-birthday", "Birthday Stage Decoration", 5499, 6999, "3 hr", "/images/decor/theme-birthday/theme-birthday-04.jpg", undefined, "Stage"),
+      p("stage-birthday", "Birthday Stage Decoration", 5499, 6999, "3 hr", "/images/decor/annaprashan/annaprashan-12.jpg", undefined, "Stage"),
       p("terrace-birthday", "Terrace Birthday Setup", 4299, 5499, "2.5 hr", "/images/decor/adult/adult-08.jpg", undefined, "Premium"),
       p("surprise-birthday", "Surprise Birthday Setup", 1499, 1999, "1.5 hr", "/images/decor/surprise-birthday/surprise-birthday-01.jpg", "Best Seller", "Simple"),
       p("golden-birthday", "Golden Birthday Decoration", 2899, 3999, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-04.jpg", "Trending", "Premium"),
@@ -121,28 +128,28 @@ export const categories: Category[] = [
     blurb: "Bigger builds, fresh flowers and lighting.",
     products: [
       p("premium-gold-ring", "Premium Gold Ring Setup", 5499, 6999, "3 hr", "/images/decor/anniversary/anniversary-05.jpg", "Best Seller"),
-      p("luxe-floral-stage", "Luxe Floral Stage", 6999, 8499, "3.5 hr", "/images/decor/theme-birthday/theme-birthday-03.jpg", "Most Loved"),
+      p("luxe-floral-stage", "Luxe Floral Stage", 6999, 8499, "3.5 hr", "/images/decor/anniversary/anniversary-24.jpg", "Most Loved"),
       p("pastel-cloud-setup", "Pastel Cloud Setup", 5999, 7299, "3 hr", "/images/decor/baby-shower/baby-shower-08.jpg"),
       p("neon-name-backdrop", "Neon Name Backdrop", 6499, 7999, "3 hr", "/images/decor/surprise-birthday/surprise-birthday-11.jpg", "Trending"),
-      p("champagne-anniversary", "Champagne Anniversary Setup", 5999, 6999, "2.5 hr", "/images/decor/anniversary/anniversary-06.jpg"),
-      p("grand-hall-setup", "Grand Hall Setup", 10499, 12999, "4 hr", "/images/decor/theme-birthday/theme-birthday-06.jpg", "Trending"),
+      p("champagne-anniversary", "Champagne Anniversary Setup", 5999, 6999, "2.5 hr", "/images/decor/anniversary/anniversary-02.jpg"),
+      p("grand-hall-setup", "Grand Hall Setup", 10499, 12999, "4 hr", "/images/decor/birthday/birthday-10.jpg", "Trending"),
     ],
   },
   {
     slug: "kids-birthday",
     name: "Kids Birthday",
     blurb: "One theme, carried through every element.",
-    themes: ["Unicorn", "Jungle", "Space", "Princess", "Cartoon", "Krishna"],
+    themes: ["Football", "Aeroplane", "Jungle", "Princess", "Cartoon", "Krishna"],
     occasionName: "Kids Party",
     products: [
-      p("unicorn-theme", "Unicorn Theme Decoration", 2799, 3799, "2 hr", "/images/decor/theme-birthday/theme-birthday-08.jpg", "Best Seller", "Unicorn"),
+      p("unicorn-theme", "Football Theme Decoration", 2799, 3799, "2 hr", "/images/decor/baby-boy-theme/baby-boy-theme-01.jpg", "Best Seller", "Football"),
       p("jungle-theme", "Jungle Theme Decoration", 2999, 3999, "2 hr", "/images/decor/baby-boy-theme/baby-boy-theme-03.jpg", "Most Loved", "Jungle"),
-      p("superhero-theme", "Space Theme Decoration", 3199, 4299, "2 hr", "/images/decor/theme-birthday/theme-birthday-02.jpg", "Trending", "Space"),
+      p("superhero-theme", "Aeroplane Theme Decoration", 3199, 4299, "2 hr", "/images/decor/baby-boy-theme/baby-boy-theme-06.jpg", "Trending", "Aeroplane"),
       p("princess-theme", "Princess Theme Decoration", 3099, 4199, "2 hr", "/images/decor/theme-birthday/theme-birthday-07.jpg", "Best Seller", "Princess"),
-      p("cartoon-theme", "Cartoon Theme Decoration", 2200, 3300, "2 hr", "/images/decor/theme-birthday/theme-birthday-05.jpg", "Most Loved", "Cartoon"),
+      p("cartoon-theme", "Cartoon Theme Decoration", 2200, 3300, "2 hr", "/images/decor/baby-boy/baby-boy-01.jpg", "Most Loved", "Cartoon"),
       p("krishna-theme", "Krishna Theme Decoration", 3499, 4499, "2.5 hr", "/images/decor/annaprashan/annaprashan-05.jpg", undefined, "Krishna"),
-      p("first-birthday", "First Birthday Setup", 3799, 4899, "2.5 hr", "/images/decor/baby-boy-theme/baby-boy-theme-02.jpg", "Best Seller", "Cartoon"),
-      p("balloon-play-corner", "Balloon Play Corner", 2100, 3000, "1.5 hr", "/images/decor/baby-boy-theme/baby-boy-theme-04.jpg", undefined, "Jungle"),
+      p("first-birthday", "First Birthday Setup", 3799, 4899, "2.5 hr", "/images/decor/baby-boy/baby-boy-05.jpg", "Best Seller", "Cartoon"),
+      p("balloon-play-corner", "Balloon Play Corner", 2100, 3000, "1.5 hr", "/images/decor/baby-boy/baby-boy-04.jpg", undefined, "Jungle"),
     ],
   },
   {
@@ -151,12 +158,12 @@ export const categories: Category[] = [
     blurb: "The rice ceremony, styled for the whole family.",
     occasionName: "Annaprashan",
     products: [
-      p("annaprashan-home", "Annaprashan Home Setup", 3799, 4899, "2.5 hr", "/images/decor/annaprashan/annaprashan-01.jpg", "Best Seller"),
+      p("annaprashan-home", "Annaprashan Home Setup", 3799, 4899, "2.5 hr", "/images/decor/annaprashan/annaprashan-04.jpg", "Best Seller"),
       p("annaprashan-classic", "Annaprashan Decoration", 3499, 5499, "2 hr", "/images/decor/annaprashan/annaprashan-03.jpg", "Most Loved"),
       p("annaprashan-krishna", "Krishna Theme Annaprashan", 3799, 4799, "2.5 hr", "/images/decor/annaprashan/annaprashan-05.jpg", "Trending"),
       p("annaprashan-premium", "Premium Annaprashan Setup", 5499, 6499, "3 hr", "/images/decor/annaprashan/annaprashan-09.jpg"),
       p("annaprashan-floral", "Floral Annaprashan Setup", 4299, 5299, "2.5 hr", "/images/decor/annaprashan/annaprashan-10.jpg"),
-      p("mundan-setup", "Naming Ceremony Setup", 3299, 4299, "2 hr", "/images/decor/welcome-baby/welcome-baby-01.jpg"),
+      p("mundan-setup", "Naming Ceremony Setup", 3299, 4299, "2 hr", "/images/decor/welcome-baby/welcome-baby-02.jpg"),
     ],
   },
   {
@@ -168,10 +175,10 @@ export const categories: Category[] = [
     products: [
       p("romantic-room", "Romantic Room Setup", 2699, 3199, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-03.jpg", "Best Seller", "Romantic"),
       p("candlelight-room", "Candlelight Dinner Setup", 3499, 4299, "2.5 hr", "/images/decor/surprise-birthday/surprise-birthday-05.jpg", "Most Loved", "Romantic"),
-      p("birthday-room", "Birthday Room Decoration", 2199, 3199, "2 hr", "/images/decor/birthday/birthday-08.jpg", "Trending", "Birthday"),
+      p("birthday-room", "Birthday Room Decoration", 2199, 3199, "2 hr", "/images/decor/birthday/birthday-02.jpg", "Trending", "Birthday"),
       p("surprise-girlfriend", "Surprise Setup for Her", 2299, 2999, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-10.jpg", "Most Loved", "Surprise"),
       p("heart-room", "Heart Balloon Room", 1999, 2399, "1.5 hr", "/images/decor/anniversary/anniversary-01.jpg", undefined, "Romantic"),
-      p("hotel-room-setup", "Hotel Room Decoration", 3199, 3999, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-06.jpg", undefined, "Surprise"),
+      p("hotel-room-setup", "Hotel Room Decoration", 3199, 3999, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-08.jpg", undefined, "Surprise"),
     ],
   },
   {
@@ -185,7 +192,7 @@ export const categories: Category[] = [
       p("engagement-setup", "Engagement Decoration", 4399, 5299, "3 hr", "/images/decor/anniversary/anniversary-08.jpg", "Trending"),
       p("rose-anniversary", "Rose Petal Anniversary", 2599, 3199, "2 hr", "/images/decor/anniversary/anniversary-13.jpg"),
       p("silver-jubilee", "25th Anniversary Setup", 5999, 6999, "3 hr", "/images/decor/anniversary/anniversary-11.jpg"),
-      p("terrace-anniversary", "Terrace Anniversary Setup", 4899, 5899, "3 hr", "/images/decor/anniversary/anniversary-04.jpg"),
+      p("terrace-anniversary", "Terrace Anniversary Setup", 4899, 5899, "3 hr", "/images/decor/anniversary/anniversary-07.jpg"),
     ],
   },
   {
@@ -198,7 +205,7 @@ export const categories: Category[] = [
       p("baby-shower-classic", "Baby Shower Decoration", 2299, 2999, "2.5 hr", "/images/decor/baby-shower/baby-shower-10.jpg", "Best Seller"),
       p("baby-shower-premium", "Premium Baby Shower", 5499, 6799, "3 hr", "/images/decor/baby-shower/baby-shower-08.jpg", "Trending"),
       p("godbharai-setup", "Godbharai Setup", 2799, 3299, "2.5 hr", "/images/decor/baby-shower/baby-shower-06.jpg"),
-      p("welcome-baby-home", "Welcome Baby Home Setup", 2599, 3699, "2 hr", "/images/decor/welcome-baby/welcome-baby-03.jpg", "Best Seller"),
+      p("welcome-baby-home", "Welcome Baby Home Setup", 2599, 3699, "2 hr", "/images/decor/welcome-baby/welcome-baby-07.jpg", "Best Seller"),
       p("gender-reveal", "Gender Reveal Setup", 3499, 4299, "2.5 hr", "/images/decor/baby-shower/baby-shower-04.jpg"),
     ],
   },
@@ -224,11 +231,11 @@ export const categories: Category[] = [
     occasionName: "Shop Opening",
     products: [
       p("shop-opening", "Shop Opening Decoration", 6499, 8599, "3 hr", "/images/catalog/shop/ribbon-arch.jpg", "Trending", "Shop Opening"),
-      p("shop-entrance", "Entrance Balloon Arch", 1999, 2499, "1.5 hr", "/images/decor/welcome-baby/welcome-baby-03.jpg", "Best Seller", "Shop Opening"),
+      p("shop-entrance", "Entrance Balloon Arch", 1999, 2499, "1.5 hr", "/images/decor/anniversary/anniversary-17.jpg", "Best Seller", "Shop Opening"),
       p("showroom-setup", "Showroom Decoration", 5499, 6499, "3 hr", "/images/decor/anniversary/anniversary-14.jpg", undefined, "Showroom"),
       p("office-setup", "Office Decoration", 2939, 3199, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-12.jpg", undefined, "Office"),
       p("ribbon-ceremony", "Ribbon Cutting Setup", 2499, 3199, "1.5 hr", "/images/catalog/shop/ribbon-arch.jpg", "Most Loved", "Shop Opening"),
-      p("festive-shop", "Festive Shop Decoration", 3499, 4299, "2 hr", "/images/decor/anniversary/anniversary-17.jpg", undefined, "Showroom"),
+      p("festive-shop", "Festive Shop Decoration", 3499, 4299, "2 hr", "/images/decor/adult/adult-06.jpg", undefined, "Showroom"),
     ],
   },
   {
@@ -253,7 +260,7 @@ export const categories: Category[] = [
     products: [
       p("wedding-stage", "Wedding Stage Decoration", 12999, 15999, "5 hr", "/images/catalog/wedding/mandap.jpg", "Trending"),
       p("reception-setup", "Reception Decoration", 10499, 12999, "4 hr", "/images/catalog/wedding/hall.jpg", "Best Seller"),
-      p("wedding-entrance", "Wedding Entrance Arch", 5999, 7499, "3 hr", "/images/decor/welcome-baby/welcome-baby-03.jpg", "Most Loved"),
+      p("wedding-entrance", "Wedding Entrance Arch", 5999, 7499, "3 hr", "/images/decor/anniversary/anniversary-26.jpg", "Most Loved"),
       p("sangeet-setup", "Sangeet Night Setup", 8499, 10499, "3.5 hr", "/images/decor/annaprashan/annaprashan-08.jpg"),
       p("photo-corner", "Wedding Photo Corner", 4499, 5499, "2.5 hr", "/images/decor/adult/adult-04.jpg", "Best Seller"),
       p("varmala-stage", "Varmala Stage Setup", 9499, 11499, "4 hr", "/images/catalog/wedding/varmala.jpg"),
@@ -298,11 +305,11 @@ export const collections: Collection[] = [
     title: "Kids Birthday Themes",
     subtitle: "One theme, carried through every element.",
     tiles: [
-      { label: "Unicorn", href: "/catalog/kids-birthday?theme=Unicorn", image: "/images/decor/theme-birthday/theme-birthday-08.jpg" },
+      { label: "Football", href: "/catalog/kids-birthday?theme=Football", image: "/images/decor/baby-boy-theme/baby-boy-theme-01.jpg" },
       { label: "Jungle", href: "/catalog/kids-birthday?theme=Jungle", image: "/images/decor/baby-boy-theme/baby-boy-theme-03.jpg" },
-      { label: "Space", href: "/catalog/kids-birthday?theme=Space", image: "/images/decor/theme-birthday/theme-birthday-02.jpg" },
+      { label: "Aeroplane", href: "/catalog/kids-birthday?theme=Aeroplane", image: "/images/decor/baby-boy-theme/baby-boy-theme-06.jpg" },
       { label: "Princess", href: "/catalog/kids-birthday?theme=Princess", image: "/images/decor/theme-birthday/theme-birthday-07.jpg" },
-      { label: "Cartoon", href: "/catalog/kids-birthday?theme=Cartoon", image: "/images/decor/theme-birthday/theme-birthday-05.jpg" },
+      { label: "Cartoon", href: "/catalog/kids-birthday?theme=Cartoon", image: "/images/decor/baby-boy/baby-boy-01.jpg" },
       { label: "Krishna", href: "/catalog/kids-birthday?theme=Krishna", image: "/images/decor/annaprashan/annaprashan-05.jpg" },
     ],
   },
