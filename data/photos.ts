@@ -2,13 +2,19 @@
  * The client's real portfolio photographs.
  *
  * GENERATED — do not edit by hand. Produced from the studio's photo library
- * (11 category folders, 133 images) and committed to public/images/decor/.
+ * (11 category folders, 131 images) and committed to public/images/decor/.
  * Regenerate only if the source library changes.
  *
  * Dimensions are read from each JPEG's own header so <Image> reserves the
  * correct box and CLS stays at zero. Orientation is mixed, so consumers should
  * place these in a fixed-aspect container with object-cover rather than trusting
  * any single ratio.
+ *
+ * ⚠ REMOVED: theme-birthday-09.jpg was a phone screenshot, 720x1600, with the
+ * content rotated 90° and the status bar (clock, signal, battery) still in
+ * frame. Aspect ratio alone does not identify these — five other portrait
+ * photographs share the same 9:20 shape and are perfectly good; this one was
+ * found by looking.
  *
  * ⚠ REMOVED: anniversary-12.jpg was a screenshot of another vendor's social
  * post — it carried "shop4party" branding, a social-media UI strip and a
@@ -192,7 +198,6 @@ export const photos: Record<PhotoCategory, Photo[]> = {
     { src: "/images/decor/theme-birthday/theme-birthday-06.jpg", w: 1080, h: 744, alt: "Themed birthday balloon decoration with props and backdrop in Patna" },
     { src: "/images/decor/theme-birthday/theme-birthday-07.jpg", w: 1600, h: 1200, alt: "Themed birthday balloon decoration with props and backdrop in Patna" },
     { src: "/images/decor/theme-birthday/theme-birthday-08.jpg", w: 1080, h: 492, alt: "Themed birthday balloon decoration with props and backdrop in Patna" },
-    { src: "/images/decor/theme-birthday/theme-birthday-09.jpg", w: 720, h: 1600, alt: "Themed birthday balloon decoration with props and backdrop in Patna" },
   ],
   "welcome-baby": [
     { src: "/images/decor/welcome-baby/welcome-baby-01.jpg", w: 970, h: 1600, alt: "Welcome baby home decoration with balloons and name lettering in Patna" },
@@ -224,7 +229,7 @@ export const allPhotos: (Photo & { category: PhotoCategory })[] = (
  */
 const NAMED_BACKDROPS = new Set([
   "theme-birthday-01", "theme-birthday-02", "theme-birthday-03", "theme-birthday-04",
-  "theme-birthday-05", "theme-birthday-06", "theme-birthday-08", "theme-birthday-09",
+  "theme-birthday-05", "theme-birthday-06", "theme-birthday-08",
   "baby-boy-theme-02", "baby-boy-theme-04", "baby-boy-theme-05", "baby-boy-theme-07",
   "annaprashan-01", "annaprashan-07", "annaprashan-11", "annaprashan-14",
   "annaprashan-16", "annaprashan-17",
