@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { photosFor, pickPhotos } from "@/data/photos";
-import { CinematicShowcase } from "@/components/sections/CinematicShowcase";
 import { PhotoOrScene } from "@/components/decor/PhotoOrScene";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -174,20 +174,32 @@ export default async function DecorationPage({ params }: PageProps<"/decorations
         </div>
       </section>
 
-      {/*
-        Cinematic showcase — the same pinned, staged scroll as the homepage
-        transformation, played through real photographs of this setup with each
-        frame paired to the part of the work it shows. Only rendered when the
-        studio has actually photographed this kind of setup.
-      */}
-      {showcasePhotos.length > 0 && (
-        <CinematicShowcase
-          eyebrow="The work, frame by frame"
-          lines={["From ordinary", { text: "to unforgettable.", className: "italic text-rose-deep" }]}
-          photos={showcasePhotos}
-          steps={d.includes}
-        />
-      )}
+      {/* A plain grid, not the pinned scroll sequence that used to sit here.
+            Removed at the client's request: the catalogue direction wants pages
+            that can be skimmed, and a section that hijacks the scroll to play a
+            photo sequence works against that. */}
+        {showcasePhotos.length > 0 && (
+          <section className="section-y" aria-label="Photographs of this setup">
+            <div className="shell-wide">
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5">
+                {showcasePhotos.map((ph) => (
+                  <div
+                    key={ph.src}
+                    className="relative aspect-4/5 overflow-hidden rounded-[6px] bg-cream"
+                  >
+                    <Image
+                      src={ph.src}
+                      alt={ph.alt}
+                      fill
+                      sizes="(min-width:1024px) 20vw, 45vw"
+                      className="object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
       {/* ── enquire ── */}
       <section id="enquire" className="section-y bg-cream" aria-labelledby="enquire-heading">

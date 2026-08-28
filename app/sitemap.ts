@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/data/business";
 import { occasions } from "@/data/occasions";
 import { decorations } from "@/data/decorations";
+import { categories } from "@/data/catalog";
 
 /**
  * Sitemap.
@@ -30,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: r.freq,
       priority: r.priority,
+    })),
+    ...categories.map((c) => ({
+      url: `${siteUrl}/catalog/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
     })),
     ...occasions.map((o) => ({
       url: `${siteUrl}/occasions/${o.slug}`,

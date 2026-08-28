@@ -1,6 +1,7 @@
 import { occasions, getOccasion } from "./occasions";
 import { decorations, getDecoration } from "./decorations";
 import { photosFor, pickPhotos, type Photo } from "./photos";
+import { categories as catalogCategories } from "./catalog";
 
 /**
  * Mega-menu configuration.
@@ -74,13 +75,22 @@ const fromOccasion = (slug: string, description: string, label?: string): MegaIt
   };
 };
 
-const fromDecoration = (slug: string, description: string, label?: string): MegaItem => {
-  const d = getDecoration(slug);
+
+/**
+ * Catalogue categories, for the Decorations drawer.
+ *
+ * The drawer used to list the ten editorial decoration pages. Those still
+ * exist, but the catalogue is now the structure customers actually shop, so
+ * the menu points at it — a nav that disagrees with the homepage is worse than
+ * either version on its own.
+ */
+const fromCatalog = (slug: string, description?: string): MegaItem => {
+  const c = catalogCategories.find((x) => x.slug === slug)!;
   return {
-    label: label ?? d?.name ?? slug,
-    href: `/decorations/${slug}`,
-    description,
-    photo: decorationPhoto(slug),
+    label: c.name,
+    href: `/catalog/${c.slug}`,
+    description: description ?? c.blurb,
+    photo: { src: c.products[0].image, alt: c.name, w: 1000, h: 1250 },
     accent: "rose",
   };
 };
@@ -129,35 +139,30 @@ export const megaMenus: MegaMenu[] = [
     featureEyebrow: "The setup",
     columns: [
       {
+        heading: "Most booked",
+        items: [
+          fromCatalog("birthday-decoration"),
+          fromCatalog("kids-birthday"),
+          fromCatalog("anniversary"),
+          fromCatalog("baby-shower"),
+        ],
+      },
+      {
         heading: "By space",
         items: [
-          fromDecoration("birthday-room-setup", "The whole room, done together.", "Room Decoration"),
-          fromDecoration("stage-backdrop", "The focal wall every photo has behind it.", "Stage & Backdrop"),
-          fromDecoration("anniversary-setup", "Intimate rather than loud.", "Romantic Room"),
-          fromDecoration("welcome-baby-decoration", "For the day the baby comes home.", "Welcome Baby"),
+          fromCatalog("room-decoration"),
+          fromCatalog("premium-decoration"),
+          fromCatalog("car-decoration"),
+          fromCatalog("shop-decoration"),
         ],
       },
       {
-        heading: "By style",
+        heading: "Ceremonies",
         items: [
-          fromDecoration("balloon-garland", "Hand-clustered, colour matched.", "Balloon Garland"),
-          fromDecoration("balloon-arch", "The piece guests walk through.", "Balloon Arch"),
-          fromDecoration("balloon-column", "Vertical pieces that frame an entrance.", "Balloon Columns"),
-          fromDecoration("kids-theme-decoration", "One theme, carried the whole way.", "Themed Decor"),
-        ],
-      },
-      {
-        heading: "By occasion",
-        items: [
-          fromDecoration("baby-shower-setup", "A seating corner for the mum-to-be."),
-          fromDecoration("proposal-decoration", "Planned around the reveal."),
-          {
-            label: "All decorations",
-            href: "/decorations",
-            description: "Every setup we build, in one place.",
-            photo: decorationPhoto("balloon-garland"),
-            accent: "rose",
-          },
+          fromCatalog("annaprashan"),
+          fromCatalog("bride-to-be"),
+          fromCatalog("wedding"),
+          fromCatalog("corporate"),
         ],
       },
     ],

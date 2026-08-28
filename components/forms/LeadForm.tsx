@@ -40,10 +40,23 @@ const BUDGETS = ["Keep it simple", "Something in between", "Go all out", "Not su
  *    that actually reaches the business, so the form guarantees the enquiry
  *    arrives rather than quietly dropping it into a server log.
  */
-export function LeadForm({ defaultOccasion }: { defaultOccasion?: string }) {
+export function LeadForm({
+  defaultOccasion,
+  setup,
+}: {
+  defaultOccasion?: string;
+  /**
+   * A setup the visitor clicked in the catalogue. Carried through so the
+   * enquiry does not start blank after they picked something specific — the
+   * card links here with `?setup=`, and arriving at an empty form would lose
+   * everything they just told us by clicking.
+   */
+  setup?: { name: string; price: string };
+}) {
   const [fields, setFields] = useState<Fields>({
     ...EMPTY,
     occasion: defaultOccasion ?? "",
+    message: setup ? `I'm interested in the ${setup.name} (${setup.price}).` : "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "done">("idle");
@@ -164,6 +177,13 @@ export function LeadForm({ defaultOccasion }: { defaultOccasion?: string }) {
   const labelCls = "block text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-muted";
 
   return (
+    <>
+      {setup && (
+        <p className="mb-5 rounded-[6px] border border-sand bg-cream/60 px-4 py-3 text-[0.86rem] text-ink">
+          Enquiring about <strong className="font-semibold">{setup.name}</strong>
+          <span className="text-ink-muted"> — from {setup.price}</span>
+        </p>
+      )}
     <form onSubmit={onSubmit} noValidate className="grid gap-6 sm:grid-cols-2">
       {/* Honeypot: visually and semantically hidden from real users. */}
       <div aria-hidden="true" className="hidden">
@@ -290,5 +310,6 @@ export function LeadForm({ defaultOccasion }: { defaultOccasion?: string }) {
         </p>
       </div>
     </form>
+    </>
   );
 }

@@ -6,6 +6,7 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { breadcrumbSchema, jsonLd } from "@/lib/seo/schema";
 import { generalFaqs } from "@/data/faqs";
+import { allProducts, formatINR } from "@/data/catalog";
 import {
   business,
   formatPhone,
@@ -19,7 +20,17 @@ export const metadata: Metadata = buildMetadata({
   path: "/contact",
 });
 
-export default function ContactPage() {
+/**
+ * `?setup=<slug>` arrives from a catalogue card click. Resolved here, on the
+ * server, so the form renders already knowing what the visitor picked.
+ */
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ setup?: string }>;
+}) {
+  const { setup: setupSlug } = await searchParams;
+  const picked = setupSlug ? allProducts.find((p) => p.slug === setupSlug) : undefined;
   return (
     <>
       <script
@@ -42,7 +53,10 @@ export default function ContactPage() {
             <h2 id="contact-heading" className="sr-only">
               Enquiry form
             </h2>
-            <LeadForm />
+            <LeadForm
+              defaultOccasion={picked?.occasionName}
+              setup={picked ? { name: picked.name, price: formatINR(picked.price) } : undefined}
+            />
           </div>
 
           <aside className="lg:border-l lg:border-sand lg:pl-12">
