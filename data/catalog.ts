@@ -20,6 +20,17 @@
  * lives on /gallery.
  */
 
+/**
+ * Whether the prices in this file are the client's real, confirmed rates.
+ *
+ * Gates the `offers` block in Product structured data specifically. Showing an
+ * estimated price on the page is one thing; feeding it to Google as machine-
+ * readable data is another — it can surface in search results and shopping
+ * surfaces as an authoritative quote from the business. Flip to true only once
+ * a real rate card has replaced the placeholders above.
+ */
+export const PRICES_VERIFIED = false;
+
 export type Badge = "Best Seller" | "Most Loved" | "Trending" | "New";
 
 export type Product = {

@@ -5,6 +5,7 @@ import { PageHero } from "@/components/layout/PageHero";
 import { ProductCard } from "@/components/catalog/ProductCard";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { categoryItemListSchema, jsonLd, productSchema } from "@/lib/seo/schema";
 import { categories, getCategory } from "@/data/catalog";
 import { business } from "@/data/business";
 
@@ -49,6 +50,21 @@ export default async function CategoryPage({
 
   return (
     <>
+      {/* Product nodes carry the review data when it exists — Organization
+          cannot, because a business rating itself is self-serving in Google's
+          eyes. See the note on productSchema. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            jsonLd(
+              categoryItemListSchema(category.name, category.slug, shown),
+              ...shown.map((p) => productSchema({ ...p, categoryName: category.name }, category.slug)),
+            ),
+          ),
+        }}
+      />
+
       <PageHero
         eyebrow={`${shown.length} ${shown.length === 1 ? "setup" : "setups"} · ${business.city}`}
         lines={[category.name]}
