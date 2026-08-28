@@ -41,6 +41,7 @@ export function ProductCard({
           fill
           sizes="(min-width:1280px) 20vw, (min-width:768px) 30vw, 62vw"
           priority={priority}
+          quality={62}
           className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
         />
 
@@ -69,8 +70,12 @@ export function ProductCard({
             ones. */}
         {product.rating && (
           <p className="mt-1 flex items-center gap-1 text-[0.75rem] text-ink-muted">
-            <span aria-hidden="true" className="text-rose-deep">★</span>
-            <span className="font-medium text-ink">{product.rating.score.toFixed(1)}</span>
+            <span aria-hidden="true" className="text-rose-deep">
+              ★
+            </span>
+            <span className="font-medium text-ink">
+              {product.rating.score.toFixed(1)}
+            </span>
             <span>({product.rating.count} reviews)</span>
           </p>
         )}
@@ -82,7 +87,9 @@ export function ProductCard({
             {formatINR(product.mrp)}
           </span>
           {off > 0 && (
-            <span className="text-[0.74rem] font-semibold text-rose-deep">{off}% off</span>
+            <span className="text-[0.74rem] font-semibold text-rose-deep">
+              {off}% off
+            </span>
           )}
         </div>
       </div>

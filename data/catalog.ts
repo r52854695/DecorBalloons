@@ -327,3 +327,16 @@ export const collections: Collection[] = [
     ],
   },
 ];
+
+
+/**
+ * Every theme name used by any category, for the filter stylesheet.
+ *
+ * The shelf filter is done in CSS rather than by re-rendering React, so the
+ * product cards can stay server-rendered and never hydrate. That needs one
+ * rule per theme, and the rules are generated from this list so adding a theme
+ * to a category cannot silently leave its chip doing nothing.
+ */
+export const distinctThemes = [
+  ...new Set(categories.flatMap((c) => c.themes ?? [])),
+].sort();

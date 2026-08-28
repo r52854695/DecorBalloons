@@ -15,12 +15,17 @@ const ITEMS = [
 
 export function TrustStrip() {
   return (
-    <section aria-label="What to expect" className="border-y border-sand bg-white">
+    <section
+      aria-label="What to expect"
+      className="border-y border-sand bg-white"
+    >
       <div className="shell-wide grid grid-cols-2 gap-x-6 gap-y-5 py-6 md:grid-cols-4">
         {ITEMS.map((i) => (
           <div key={i.title}>
             <p className="text-[0.88rem] font-semibold text-ink">{i.title}</p>
-            <p className="mt-0.5 text-[0.78rem] leading-snug text-ink-muted">{i.note}</p>
+            <p className="mt-0.5 text-[0.78rem] leading-snug text-ink-muted">
+              {i.note}
+            </p>
           </div>
         ))}
       </div>

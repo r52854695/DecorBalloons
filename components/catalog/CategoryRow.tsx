@@ -1,42 +1,43 @@
-"use client";
-
 import Link from "next/link";
-import { useRef, useState } from "react";
 import { ProductCard } from "./ProductCard";
+import { ShelfArrows } from "./ShelfArrows";
+import { ShelfChips } from "./ShelfChips";
 import type { Category } from "@/data/catalog";
-import { cn } from "@/lib/utils";
 
 /**
- * One catalogue row: heading, optional theme chips, and a horizontally
- * scrolling shelf of priced setups.
+ * One catalogue row: heading, theme chips, and a horizontally scrolling shelf
+ * of priced setups.
  *
- * The shelf is a native `overflow-x-auto` scroller with scroll-snap rather
- * than a JS carousel — it works with a trackpad, a touch swipe, and the
- * keyboard on day one, and costs no JavaScript to run. The arrow buttons just
- * call `scrollBy`.
+ * A server component. It used to be a client component so it could filter by
+ * theme in React, which meant every product card it rendered hydrated too —
+ * seventy of them across the homepage, and mobile LCP sat at eight seconds with
+ * a 7.4s render delay while the main thread worked through them.
  *
- * Filtering is local to the row so switching a chip never re-renders the rest
- * of the page.
+ * Now the cards are static server output. The only client code is
+ * `ShelfControls`, which sets `data-filter` on the shelf; CSS hides the cards
+ * that do not match (see ShelfFilterStyles). Same behaviour, none of the
+ * hydration.
+ *
+ * The shelf is still a native `overflow-x` scroller with scroll-snap rather
+ * than a JS carousel, so trackpad, touch and keyboard all work on their own.
  */
 export function CategoryRow({
   category,
   priority = false,
+  /**
+   * Cap on cards rendered here. The homepage shows a preview and sends people
+   * to the category page for the rest; rendering all seventy setups up front
+   * cost DOM size for cards nobody scrolls to.
+   */
+  limit,
 }: {
   category: Category;
-  /** Eager-load the first row's images; everything below the fold is lazy. */
   priority?: boolean;
+  limit?: number;
 }) {
-  const [theme, setTheme] = useState<string>("All");
-  const shelf = useRef<HTMLDivElement>(null);
-
-  const shown =
-    theme === "All" ? category.products : category.products.filter((p) => p.theme === theme);
-
-  const nudge = (dir: 1 | -1) => {
-    const el = shelf.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.8, 640), behavior: "smooth" });
-  };
+  const shelfId = `shelf-${category.slug}`;
+  const shown = limit ? category.products.slice(0, limit) : category.products;
+  const hasMore = shown.length < category.products.length;
 
   return (
     <section aria-labelledby={`cat-${category.slug}`} className="py-5 md:py-6">
@@ -49,26 +50,13 @@ export function CategoryRow({
             >
               {category.name}
             </h2>
-            <p className="mt-1.5 text-[0.84rem] text-ink-muted">{category.blurb}</p>
+            <p className="mt-1.5 text-[0.84rem] text-ink-muted">
+              {category.blurb}
+            </p>
           </div>
 
           <div className="flex items-center gap-2">
-            {/* Arrows are an enhancement; the shelf scrolls without them. */}
-            <div className="hidden gap-1.5 md:flex">
-              {([-1, 1] as const).map((d) => (
-                <button
-                  key={d}
-                  type="button"
-                  onClick={() => nudge(d)}
-                  aria-label={d === -1 ? `Scroll ${category.name} left` : `Scroll ${category.name} right`}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-sand text-ink-muted transition-colors hover:border-ink/30 hover:text-ink"
-                >
-                  <span aria-hidden="true" className="text-[0.8rem]">
-                    {d === -1 ? "←" : "→"}
-                  </span>
-                </button>
-              ))}
-            </div>
+            <ShelfArrows shelfId={shelfId} categoryName={category.name} />
             <Link
               href={`/catalog/${category.slug}`}
               className="text-[0.76rem] font-semibold uppercase tracking-[0.12em] text-rose-deep"
@@ -79,48 +67,37 @@ export function CategoryRow({
         </div>
 
         {category.themes && (
-          <div className="mt-3.5 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {["All", ...category.themes].map((t) => (
-              <button
-                key={t}
-                type="button"
-                aria-pressed={theme === t}
-                onClick={() => setTheme(t)}
-                className={cn(
-                  "shrink-0 rounded-full border px-3.5 py-1.5 text-[0.76rem] transition-colors",
-                  theme === t
-                    ? "border-ink bg-ink text-ivory"
-                    : "border-sand bg-white text-ink-muted hover:border-ink/30 hover:text-ink",
-                )}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
+          <ShelfChips shelfId={shelfId} themes={category.themes} />
         )}
       </div>
 
       <div
-        ref={shelf}
+        id={shelfId}
         className="mt-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {shown.map((p, i) => (
-          <ProductCard
+          <div
             key={p.slug}
-            product={p}
-            priority={priority && i < 3}
+            // Read by the filter stylesheet. Untagged cards stay visible under
+            // every filter, which is the right default for a category whose
+            // products are not themed.
+            data-theme={p.theme}
             className="w-[62vw] shrink-0 snap-start sm:w-[38vw] md:w-[30vw] lg:w-[23vw] xl:w-[19rem]"
-          />
+          >
+            <ProductCard product={p} priority={priority && i < 2} />
+          </div>
         ))}
 
-        {shown.length === 0 && (
-          <p className="py-8 text-sm text-ink-muted">
-            Nothing in this theme yet — try another, or{" "}
-            <Link href="/contact" className="underline">
-              ask us
-            </Link>
-            .
-          </p>
+        {hasMore && (
+          <Link
+            href={`/catalog/${category.slug}`}
+            className="flex w-[42vw] shrink-0 snap-start flex-col items-center justify-center gap-2 rounded-[8px] border border-dashed border-sand text-center text-[0.82rem] text-ink-muted transition-colors hover:border-ink/30 hover:text-ink sm:w-[26vw] md:w-[20vw] lg:w-[15vw] xl:w-[12rem]"
+          >
+            <span aria-hidden="true" className="text-lg">
+              →
+            </span>
+            All {category.products.length} {category.name.toLowerCase()} setups
+          </Link>
         )}
       </div>
     </section>

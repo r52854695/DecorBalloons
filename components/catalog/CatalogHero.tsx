@@ -21,14 +21,18 @@ export function CatalogHero() {
       <div className="shell-wide pb-4 pt-5 md:pb-5">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="eyebrow">Balloon &amp; event decoration · {business.city}</p>
+            <p className="eyebrow">
+              Balloon &amp; event decoration · {business.city}
+            </p>
             <h1 className="mt-2 font-display text-[1.85rem] leading-[1.06] text-ink md:text-[2.5rem]">
               Decoration booked in{" "}
-              <span className="italic text-rose-deep">minutes</span>, set up at your door.
+              <span className="italic text-rose-deep">minutes</span>, set up at
+              your door.
             </h1>
             <p className="mt-2.5 max-w-xl text-[0.9rem] leading-relaxed text-ink-muted">
-              Birthdays, anniversaries, baby showers, annaprashan and shop openings across{" "}
-              {business.city}. Our own team sets up and clears away.
+              Birthdays, anniversaries, baby showers, annaprashan and shop
+              openings across {business.city}. Our own team sets up and clears
+              away.
             </p>
           </div>
 
@@ -60,7 +64,10 @@ export function CatalogHero() {
                 alt=""
                 fill
                 sizes="74px"
-                priority={i < 6}
+                quality={62}
+                // Only the first few tiles are worth pre-loading. Six priority images plus
+                // the first row's meant nine requests competing before anything painted.
+                priority={i < 3}
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </span>

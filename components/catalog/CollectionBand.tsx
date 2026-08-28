@@ -42,6 +42,7 @@ export function CollectionBand({ collection }: { collection: Collection }) {
               alt=""
               fill
               sizes="(min-width:1280px) 12rem, (min-width:768px) 20vw, 38vw"
+              quality={62}
               className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
             />
             <span

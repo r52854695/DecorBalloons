@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { CatalogHero } from "@/components/catalog/CatalogHero";
 import { CategoryRow } from "@/components/catalog/CategoryRow";
 import { CollectionBand } from "@/components/catalog/CollectionBand";
+import { ShelfFilterStyles } from "@/components/catalog/ShelfFilterStyles";
 import { TrustStrip } from "@/components/catalog/TrustStrip";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { HowItWorks } from "@/components/sections/HowItWorks";
@@ -43,9 +44,12 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd(faqSchema(homeFaqs))) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd(faqSchema(homeFaqs))),
+        }}
       />
 
+      <ShelfFilterStyles />
       <CatalogHero />
       <TrustStrip />
 
@@ -55,9 +59,13 @@ export default function HomePage() {
           relates to. */}
       {categories.map((c, i) => (
         <div key={c.slug}>
-          <CategoryRow category={c} priority={i === 0} />
-          {c.slug === "kids-birthday" && <CollectionBand collection={collections[0]} />}
-          {c.slug === "bride-to-be" && <CollectionBand collection={collections[1]} />}
+          <CategoryRow category={c} priority={i === 0} limit={4} />
+          {c.slug === "kids-birthday" && (
+            <CollectionBand collection={collections[0]} />
+          )}
+          {c.slug === "bride-to-be" && (
+            <CollectionBand collection={collections[1]} />
+          )}
         </div>
       ))}
 

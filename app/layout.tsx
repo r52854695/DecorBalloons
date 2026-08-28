@@ -33,12 +33,20 @@ const manrope = Manrope({
   display: "swap",
 });
 
-/** Script face matching the logo's "Balloons" calligraphy. */
+/**
+ * Script face matching the logo's "Balloons" calligraphy.
+ *
+ * Not preloaded. It draws one word in the wordmark and nothing else, so it has
+ * no business competing for bandwidth with the body and heading faces on first
+ * paint — three preloaded faces were 83 KB ahead of the images. It still loads,
+ * just after the things that set the page.
+ */
 const parisienne = Parisienne({
   subsets: ["latin"],
   variable: "--font-parisienne",
   display: "swap",
   weight: "400",
+  preload: false,
 });
 
 export const metadata: Metadata = {
