@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 import { CatalogHero } from "@/components/catalog/CatalogHero";
 import { CategoryRow } from "@/components/catalog/CategoryRow";
+import { CollectionBand } from "@/components/catalog/CollectionBand";
+import { TrustStrip } from "@/components/catalog/TrustStrip";
 import { TrustSection } from "@/components/sections/TrustSection";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -12,11 +14,11 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, jsonLd } from "@/lib/seo/schema";
 import { generalFaqs } from "@/data/faqs";
-import { categories } from "@/data/catalog";
+import { categories, collections } from "@/data/catalog";
 import { business } from "@/data/business";
 
 export const metadata: Metadata = buildMetadata({
-  title: `${business.name} | Balloon Decoration in ${business.city} — Book Online`,
+  title: `Balloon Decoration in ${business.city} from ₹1,499 | ${business.name}`,
   description: `Book balloon decoration in ${business.city} for birthdays, anniversaries, baby showers, annaprashan, shop openings and weddings. Set up by our own team.`,
   path: "/",
 });
@@ -45,9 +47,18 @@ export default function HomePage() {
       />
 
       <CatalogHero />
+      <TrustStrip />
 
+      {/* Collection bands are interleaved rather than stacked at the end: a
+          dozen identical shelves in a row is exactly the "template" feel the
+          client pushed back on, and each band lands right after the rows it
+          relates to. */}
       {categories.map((c, i) => (
-        <CategoryRow key={c.slug} category={c} priority={i === 0} />
+        <div key={c.slug}>
+          <CategoryRow category={c} priority={i === 0} />
+          {c.slug === "kids-birthday" && <CollectionBand collection={collections[0]} />}
+          {c.slug === "bride-to-be" && <CollectionBand collection={collections[1]} />}
+        </div>
       ))}
 
       <TrustSection />

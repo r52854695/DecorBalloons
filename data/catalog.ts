@@ -36,6 +36,16 @@ export type Product = {
   image: string;
   /** Theme chip this belongs to, for the in-row filter. */
   theme?: string;
+  /**
+   * Star rating and review count, as the reference sites show on every card.
+   *
+   * Deliberately left unset everywhere. Prices could be estimated because the
+   * client asked for realistic figures; a rating cannot — "4.9 · 313 reviews"
+   * is a claim about people who do not exist, it is what review-fraud rules
+   * actually target, and marking it up as AggregateRating risks a manual
+   * penalty. The card renders the slot the moment real numbers land here.
+   */
+  rating?: { score: number; count: number };
 };
 
 export type Category = {
@@ -214,6 +224,19 @@ export const categories: Category[] = [
     ],
   },
   {
+    slug: "balloon-bouquets",
+    name: "Balloon Bouquets",
+    blurb: "Sent to a desk, a door or a hospital room.",
+    products: [
+      p("birthday-bouquet", "Happy Birthday Balloon Bouquet", 1499, 1899, "Same day", "/images/catalog/bouquet/bouquet-01.jpg", "Best Seller"),
+      p("rose-gold-bouquet", "Rose Gold Balloon Bouquet", 1699, 2099, "Same day", "/images/catalog/bouquet/bouquet-02.jpg", "Most Loved"),
+      p("anniversary-bouquet", "Anniversary Balloon Bouquet", 1899, 2399, "Same day", "/images/catalog/bouquet/bouquet-03.jpg"),
+      p("proposal-bouquet", "Proposal Balloon Bouquet", 2199, 2699, "Same day", "/images/catalog/bouquet/bouquet-04.jpg", "Trending"),
+      p("newborn-bouquet", "Newborn Welcome Bouquet", 1599, 1999, "Same day", "/images/catalog/bouquet/bouquet-05.jpg"),
+      p("congratulations-bouquet", "Congratulations Bouquet", 1499, 1799, "Same day", "/images/catalog/bouquet/bouquet-06.jpg", "Best Seller"),
+    ],
+  },
+  {
     slug: "corporate",
     name: "Corporate Events",
     blurb: "On-brand, on-schedule, out before Monday.",
@@ -253,3 +276,52 @@ export const discountPct = (price: number, mrp: number) =>
   Math.round(((mrp - price) / mrp) * 100);
 
 export const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+
+
+/**
+ * Collection bands — a heading, a line, and a row of image tiles.
+ *
+ * Both side references (BalloonDekor, Funtook) run this pattern between the
+ * product rows, and it does something the rows cannot: it lets someone shop by
+ * theme or by stage of an event rather than by category. Each tile deep-links
+ * into a category with its theme filter already applied.
+ *
+ * Theme names are kept generic on purpose. The reference sites list Cocomelon,
+ * Frozen and Boss Baby; those are other companies' trademarks, and a small
+ * studio advertising them by name is the one who carries that risk.
+ */
+export type Collection = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  tiles: { label: string; href: string; image: string }[];
+};
+
+export const collections: Collection[] = [
+  {
+    slug: "kids-themes",
+    title: "Kids Birthday Themes",
+    subtitle: "One theme, carried through every element.",
+    tiles: [
+      { label: "Unicorn", href: "/catalog/kids-birthday?theme=Unicorn", image: "/images/catalog/kids/kids-01.jpg" },
+      { label: "Jungle", href: "/catalog/kids-birthday?theme=Jungle", image: "/images/catalog/kids/kids-02.jpg" },
+      { label: "Superhero", href: "/catalog/kids-birthday?theme=Superhero", image: "/images/catalog/kids/kids-03.jpg" },
+      { label: "Princess", href: "/catalog/kids-birthday?theme=Princess", image: "/images/catalog/kids/kids-04.jpg" },
+      { label: "Cartoon", href: "/catalog/kids-birthday?theme=Cartoon", image: "/images/catalog/kids/kids-05.jpg" },
+      { label: "Krishna", href: "/catalog/kids-birthday?theme=Krishna", image: "/images/catalog/kids/kids-06.jpg" },
+    ],
+  },
+  {
+    slug: "wedding-collection",
+    title: "The Wedding Collection",
+    subtitle: "From haldi to the car that takes them home.",
+    tiles: [
+      { label: "Haldi", href: "/catalog/bride-to-be", image: "/images/catalog/bride/bride-02.jpg" },
+      { label: "Mehndi", href: "/catalog/bride-to-be", image: "/images/catalog/bride/bride-03.jpg" },
+      { label: "Bride To Be", href: "/catalog/bride-to-be", image: "/images/catalog/bride/bride-01.jpg" },
+      { label: "Wedding Car", href: "/catalog/car-decoration", image: "/images/catalog/car/car-03.jpg" },
+      { label: "Reception", href: "/catalog/wedding", image: "/images/catalog/wedding/wedding-02.jpg" },
+      { label: "Varmala Stage", href: "/catalog/wedding", image: "/images/catalog/wedding/wedding-06.jpg" },
+    ],
+  },
+];

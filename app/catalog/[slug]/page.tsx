@@ -30,26 +30,36 @@ export async function generateMetadata({
 /** Full grid for one category — the "View all" destination from each row. */
 export default async function CategoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ theme?: string }>;
 }) {
   const { slug } = await params;
+  const { theme } = await searchParams;
   const category = getCategory(slug);
   if (!category) notFound();
+
+  // Collection tiles deep-link here with a theme already chosen. An unknown
+  // or empty theme falls back to everything rather than an empty page.
+  const known = theme && category.themes?.includes(theme) ? theme : undefined;
+  const shown = known
+    ? category.products.filter((p) => p.theme === known)
+    : category.products;
 
   return (
     <>
       <PageHero
-        eyebrow={`${category.products.length} setups · ${business.city}`}
+        eyebrow={`${shown.length} ${shown.length === 1 ? "setup" : "setups"} · ${business.city}`}
         lines={[category.name]}
-        lead={category.blurb}
+        lead={known ? `${known} theme — ${category.blurb}` : category.blurb}
         crumbs={[{ name: category.name, path: `/catalog/${category.slug}` }]}
       />
 
       <section className="section-y">
         <div className="shell-wide">
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            {category.products.map((p, i) => (
+            {shown.map((p, i) => (
               <ProductCard key={p.slug} product={p} priority={i < 5} />
             ))}
           </div>

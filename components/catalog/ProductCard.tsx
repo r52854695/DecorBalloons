@@ -58,6 +58,18 @@ export function ProductCard({
         <h3 className="line-clamp-2 min-h-[2.4em] text-[0.86rem] leading-snug text-ink">
           {product.name}
         </h3>
+
+        {/* Renders only with real data. See the note on Product["rating"] —
+            the slot exists so the card is complete the day the client
+            connects actual reviews, not so it can be filled with invented
+            ones. */}
+        {product.rating && (
+          <p className="mt-1 flex items-center gap-1 text-[0.75rem] text-ink-muted">
+            <span aria-hidden="true" className="text-rose-deep">★</span>
+            <span className="font-medium text-ink">{product.rating.score.toFixed(1)}</span>
+            <span>({product.rating.count} reviews)</span>
+          </p>
+        )}
         <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
           <span className="text-[1.02rem] font-semibold text-ink">
             {formatINR(product.price)}
