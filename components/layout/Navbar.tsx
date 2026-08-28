@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { MegaMenu } from "@/components/navigation/MegaMenu";
 import { MobileNav } from "@/components/navigation/MobileNav";
 import { Wordmark } from "./Wordmark";
+import { AnnouncementMarquee } from "./AnnouncementMarquee";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,6 +71,8 @@ export function Navbar() {
             : "border-b border-transparent bg-transparent",
         )}
       >
+        <AnnouncementMarquee />
+
         <nav
           aria-label="Primary"
           className={cn(

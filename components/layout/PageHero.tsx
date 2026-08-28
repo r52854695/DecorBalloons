@@ -26,7 +26,7 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="grain relative overflow-hidden bg-cream pt-28 pb-14 md:pt-36 md:pb-20">
+    <section className="grain relative overflow-hidden bg-cream pt-[calc(7rem+var(--marquee-h))] pb-14 md:pt-[calc(9rem+var(--marquee-h))] md:pb-20">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-70">
         <div className="absolute right-[6%] top-[22%] hidden md:block">
           <BalloonGlyph id="ph-1" color={accent} size={68} />

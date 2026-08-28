@@ -289,3 +289,43 @@
     animation: none;
   }
 }
+
+/* ── announcement marquee ──────────────────────────────────────
+   Height lives here as a variable because the header is fixed and every
+   page's top padding has to clear it; one value, one place to change it. */
+:root {
+  --marquee-h: 1.9rem;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  /* Exactly -50%: the track holds two identical copies, so this lands the
+     second copy precisely where the first started. Any other value shows a
+     seam. */
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee-track {
+  width: max-content;
+  animation: marquee-scroll 34s linear infinite;
+  will-change: transform;
+}
+
+/* Stoppable: hovering or tabbing into it holds it still. */
+.marquee-strip:hover .marquee-track,
+.marquee-strip:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    width: auto;
+  }
+  /* No motion at all — the reader scrolls it themselves instead. */
+  .marquee-strip {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .marquee-strip::-webkit-scrollbar { display: none; }
+}

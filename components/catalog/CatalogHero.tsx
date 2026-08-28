@@ -17,7 +17,7 @@ import { business, formatPhone, telHref } from "@/data/business";
  */
 export function CatalogHero() {
   return (
-    <section className="border-b border-sand bg-cream/50 pt-[4.5rem] md:pt-[5.5rem]">
+    <section className="border-b border-sand bg-cream/50 pt-[calc(4.5rem+var(--marquee-h))] md:pt-[calc(5.5rem+var(--marquee-h))]">
       <div className="shell-wide pb-4 pt-5 md:pb-5">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">

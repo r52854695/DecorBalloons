@@ -80,7 +80,7 @@ export function Hero({ bandScene }: { bandScene: ReactNode }) {
       </motion.div>
 
       {/* ── type ── */}
-      <div className="shell relative z-30 flex flex-1 flex-col justify-center pt-24 pb-6 md:pt-28 md:pb-8">
+      <div className="shell relative z-30 flex flex-1 flex-col justify-center pt-[calc(6rem+var(--marquee-h))] pb-6 md:pt-[calc(7rem+var(--marquee-h))] md:pb-8">
         <motion.p
           {...intro(0.42)}
           className="eyebrow flex items-center gap-3"

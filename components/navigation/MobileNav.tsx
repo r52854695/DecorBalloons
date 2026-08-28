@@ -27,7 +27,7 @@ export function MobileNav({ onNavigate }: { onNavigate: () => void }) {
   const { reduced } = useMotionBudget();
 
   return (
-    <div className="flex h-full flex-col pt-24 pb-10">
+    <div className="flex h-full flex-col pt-[calc(6rem+var(--marquee-h))] pb-10">
       <div className="flex-1 overflow-y-auto">
         <ul>
           {megaMenus.map((menu) => {
