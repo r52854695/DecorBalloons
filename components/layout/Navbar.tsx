@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { business, formatPhone, telHref } from "@/data/business";
@@ -11,6 +16,7 @@ import { MegaMenu } from "@/components/navigation/MegaMenu";
 import { MobileNav } from "@/components/navigation/MobileNav";
 import { Wordmark } from "./Wordmark";
 import { AnnouncementMarquee } from "./AnnouncementMarquee";
+import { DeliverTo } from "@/components/city/DeliverTo";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,7 +41,8 @@ export function Navbar() {
   }
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    const onKey = (e: KeyboardEvent) =>
+      e.key === "Escape" && setMenuOpen(false);
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
@@ -80,13 +87,18 @@ export function Navbar() {
             scrolled ? "h-16 md:h-[4.5rem]" : "h-20 md:h-[6rem]",
           )}
         >
-          <Link href="/" aria-label={`${business.name} — home`} className="shrink-0">
+          <Link
+            href="/"
+            aria-label={`${business.name} — home`}
+            className="shrink-0"
+          >
             <Wordmark size={scrolled ? "sm" : "md"} />
           </Link>
 
           <MegaMenu headerRef={headerRef} onOpenChange={setMegaOpen} />
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2 lg:flex">
+            <DeliverTo className="mr-1" />
             <a
               href={telHref(business.primaryPhone)}
               className="link-draw text-[0.82rem] font-medium text-ink-soft hover:text-ink"
@@ -104,36 +116,43 @@ export function Navbar() {
             </Button>
           </div>
 
-          {/* ── mobile trigger ── */}
-          <button
-            type="button"
-            onClick={() => setMenuOpen((v) => !v)}
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 lg:hidden"
-          >
-            <span aria-hidden="true" className="flex h-3.5 w-5 flex-col justify-between">
+          <div className="flex items-center gap-1 lg:hidden">
+            <DeliverTo />
+
+            {/* ── mobile trigger ── */}
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 lg:hidden"
+            >
               <span
-                className={cn(
-                  "block h-[1.5px] w-full bg-ink transition-transform duration-300",
-                  menuOpen && "translate-y-[6.5px] rotate-45",
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-[1.5px] w-full bg-ink transition-opacity duration-200",
-                  menuOpen && "opacity-0",
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-[1.5px] w-full bg-ink transition-transform duration-300",
-                  menuOpen && "-translate-y-[6.5px] -rotate-45",
-                )}
-              />
-            </span>
-          </button>
+                aria-hidden="true"
+                className="flex h-3.5 w-5 flex-col justify-between"
+              >
+                <span
+                  className={cn(
+                    "block h-[1.5px] w-full bg-ink transition-transform duration-300",
+                    menuOpen && "translate-y-[6.5px] rotate-45",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block h-[1.5px] w-full bg-ink transition-opacity duration-200",
+                    menuOpen && "opacity-0",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block h-[1.5px] w-full bg-ink transition-transform duration-300",
+                    menuOpen && "-translate-y-[6.5px] -rotate-45",
+                  )}
+                />
+              </span>
+            </button>
+          </div>
         </nav>
       </header>
 

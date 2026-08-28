@@ -3,6 +3,8 @@ import { Manrope, Parisienne, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import { Navbar } from "@/components/layout/Navbar";
+import { CityProvider } from "@/components/city/CityProvider";
+import { CityPicker } from "@/components/city/CityPicker";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { MobileStickyCTA } from "@/components/ui/MobileStickyCTA";
@@ -54,7 +56,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: { canonical: "/" },
   openGraph: {
@@ -85,24 +92,29 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           // Site-wide LocalBusiness + WebSite graph. Page-level schema (Service,
           // FAQPage, BreadcrumbList) is emitted by the individual routes.
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd(organizationSchema(), websiteSchema())),
+            __html: JSON.stringify(
+              jsonLd(organizationSchema(), websiteSchema()),
+            ),
           }}
         />
 
-        <Navbar />
+        <CityProvider>
+          <Navbar />
 
-        <main id="main" className="flex-1">
-          {children}
-        </main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
 
-        <Footer />
+          <Footer />
 
-        {/* Spacer so the mobile sticky bar can never cover the last footer row. */}
-        <div className="h-16 md:hidden" aria-hidden="true" />
+          {/* Spacer so the mobile sticky bar can never cover the last footer row. */}
+          <div className="h-16 md:hidden" aria-hidden="true" />
 
-        <WhatsAppButton />
-        <PartyPal />
-        <MobileStickyCTA />
+          <WhatsAppButton />
+          <PartyPal />
+          <MobileStickyCTA />
+          <CityPicker />
+        </CityProvider>
       </body>
     </html>
   );
