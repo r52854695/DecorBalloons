@@ -11,7 +11,10 @@ import type { Collection } from "@/data/catalog";
  */
 export function CollectionBand({ collection }: { collection: Collection }) {
   return (
-    <section aria-labelledby={`col-${collection.slug}`} className="bg-cream/60 py-8 md:py-10">
+    <section
+      aria-labelledby={`col-${collection.slug}`}
+      className="bg-cream/60 py-8 md:py-10"
+    >
       <div className="shell-wide">
         <h2
           id={`col-${collection.slug}`}
@@ -19,7 +22,9 @@ export function CollectionBand({ collection }: { collection: Collection }) {
         >
           {collection.title}
         </h2>
-        <p className="mt-1.5 text-[0.86rem] text-ink-muted">{collection.subtitle}</p>
+        <p className="mt-1.5 text-[0.86rem] text-ink-muted">
+          {collection.subtitle}
+        </p>
       </div>
 
       <div className="mt-5 flex gap-3 overflow-x-auto px-5 pb-1 md:px-[max(1.5rem,calc((100vw-80rem)/2+1.5rem))] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -31,7 +36,10 @@ export function CollectionBand({ collection }: { collection: Collection }) {
           >
             <Image
               src={t.image}
-              alt={t.label}
+              /* Empty on purpose: the label is rendered as visible text
+                 directly below, so repeating it here makes a screen reader
+                 announce the same word twice. */
+              alt=""
               fill
               sizes="(min-width:1280px) 12rem, (min-width:768px) 20vw, 38vw"
               className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
