@@ -1,5 +1,5 @@
 import type { SceneKey } from "@/components/decor/scenes";
-import { allPhotos, photos, type PhotoCategory } from "./photos";
+import { allPhotos, isNamedBackdrop, photos, type PhotoCategory } from "./photos";
 
 export type GalleryItem = {
   id: string;
@@ -62,7 +62,11 @@ function interleave<T>(groups: T[][]): T[] {
 }
 
 const grouped = (Object.keys(photos) as PhotoCategory[]).map((cat) =>
-  photos[cat].map((p, i) => ({ ...p, cat, i })),
+  // Named backdrops are excluded from every gallery surface, not just product
+  // cards. These strips appear on occasion and decoration pages, which are
+  // marketing surfaces like any other — a customer's child's name should not be
+  // selling a package there either.
+  photos[cat].filter((p) => !isNamedBackdrop(p.src)).map((p, i) => ({ ...p, cat, i })),
 );
 
 export const galleryItems: GalleryItem[] = interleave(grouped).map((p) => ({
@@ -83,4 +87,4 @@ export const galleryForOccasion = (slug: string) =>
 export const galleryIsIllustrated = galleryItems.every((g) => g.src === null);
 
 /** Total real photographs available, for copy that references the portfolio. */
-export const photoCount = allPhotos.length;
+export const photoCount = allPhotos.filter((p) => !isNamedBackdrop(p.src)).length;

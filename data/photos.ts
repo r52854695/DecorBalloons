@@ -213,9 +213,51 @@ export const allPhotos: (Photo & { category: PhotoCategory })[] = (
   Object.entries(photos) as [PhotoCategory, Photo[]][]
 ).flatMap(([category, list]) => list.map((p) => ({ ...p, category })));
 
-/** First n photos of a category, falling back to an empty array. */
+/**
+ * Photographs where a customer's name is legible on the backdrop or in
+ * marquee letters.
+ *
+ * Checked by eye, one file at a time — two of them (SHREEJA in light-up
+ * letters, "Welcome Baby Balhara") read as generic at thumbnail size and only
+ * gave themselves up when zoomed, so this list cannot be rebuilt by pattern
+ * matching. Add to it after looking, not after guessing.
+ */
+const NAMED_BACKDROPS = new Set([
+  "theme-birthday-01", "theme-birthday-02", "theme-birthday-03", "theme-birthday-04",
+  "theme-birthday-05", "theme-birthday-06", "theme-birthday-08", "theme-birthday-09",
+  "baby-boy-theme-02", "baby-boy-theme-04", "baby-boy-theme-05", "baby-boy-theme-07",
+  "annaprashan-01", "annaprashan-07", "annaprashan-11", "annaprashan-14",
+  "annaprashan-16", "annaprashan-17",
+  "welcome-baby-01", "welcome-baby-03", "welcome-baby-04",
+  "birthday-01", "birthday-03", "birthday-08", "birthday-11",
+  "surprise-birthday-06", "surprise-birthday-09",
+  "anniversary-04", "anniversary-06", "anniversary-18", "anniversary-19",
+  "adult-01", "adult-03", "adult-09",
+  "baby-girl-04", "baby-girl-05", "baby-shower-11",
+]);
+
+/** True when a customer's name is legible in the photograph. */
+export const isNamedBackdrop = (src: string) => {
+  const file = src.split("/").pop()?.replace(".jpg", "") ?? "";
+  return NAMED_BACKDROPS.has(file);
+};
+
+const isNamed = isNamedBackdrop;
+
+/**
+ * First n photos of a category, with named backdrops filtered out.
+ *
+ * The filter lives here rather than at each call site because every marketing
+ * surface — occasion heroes, decoration showcases, the mega menu, card
+ * fallbacks — resolves through this one function. Fixing them individually
+ * meant chasing the same leak across nine pages and missing some.
+ *
+ * `allPhotos` is deliberately NOT filtered: /gallery is the studio's portfolio
+ * and shows the work as it was shot. This is about not putting somebody's
+ * child's name on a page selling a package.
+ */
 export const photosFor = (category: PhotoCategory, n = 99): Photo[] =>
-  (photos[category] ?? []).slice(0, n);
+  (photos[category] ?? []).filter((p) => !isNamed(p.src)).slice(0, n);
 
 /** Look up a single photograph by its src, for hand-picked selections. */
 const bySrc = new Map<string, Photo>(allPhotos.map((p) => [p.src, p]));

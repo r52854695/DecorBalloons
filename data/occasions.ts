@@ -81,6 +81,7 @@ export const occasions: Occasion[] = [
         "Birthday balloon decoration at home in Patna — garlands, backdrops, cake table styling and lighting, set up for you. Share your date and we will plan it.",
     },
     photoCategory: "birthday",
+    photos: ["/images/decor/birthday/birthday-07.jpg"],
     featured: true,
   },
   {
@@ -110,6 +111,7 @@ export const occasions: Occasion[] = [
         "Baby shower decoration in Patna with soft pastel balloon arches, a seating corner for the mum-to-be and styling built for photographs.",
     },
     photoCategory: "baby-shower",
+    photos: ["/images/decor/baby-shower/baby-shower-09.jpg"],
     featured: true,
   },
   {
@@ -139,6 +141,7 @@ export const occasions: Occasion[] = [
         "Anniversary decoration in Patna — candlelight setups, romantic balloon work and personalised backdrops arranged in your home, terrace or hotel room.",
     },
     photoCategory: "anniversary",
+    photos: ["/images/decor/anniversary/anniversary-03.jpg"],
     featured: true,
   },
   {
@@ -236,6 +239,7 @@ export const occasions: Occasion[] = [
         "Themed kids party decoration in Patna — jungle, unicorn, space, princess and more, with matching backdrops, garlands and cake table styling.",
     },
     photoCategory: "theme-birthday",
+    photos: ["/images/decor/baby-boy-theme/baby-boy-theme-01.jpg"],
     featured: true,
   },
   {
@@ -265,6 +269,7 @@ export const occasions: Occasion[] = [
         "Surprise decoration at home in Patna — balloon drops, doorway transformations and personalised lettering, set up quietly to your timing.",
     },
     photoCategory: "surprise-birthday",
+    photos: ["/images/decor/surprise-birthday/surprise-birthday-03.jpg"],
     featured: true,
   },
   {
@@ -330,6 +335,7 @@ export const occasions: Occasion[] = [
         "Annaprashan rice ceremony decoration in Patna — ceremony seating, traditional balloon work, name backdrop and a family photo corner.",
     },
     photoCategory: "annaprashan",
+    photos: ["/images/decor/annaprashan/annaprashan-04.jpg"],
     featured: false,
   },
   {
@@ -393,7 +399,6 @@ export const occasions: Occasion[] = [
         "Shop opening decoration in Patna — entrance balloon arches, ribbon-cutting points and frontage styling, installed early so you open on time.",
     },
     photos: [
-      "/images/decor/welcome-baby/welcome-baby-03.jpg",
       "/images/decor/anniversary/anniversary-17.jpg",
       "/images/decor/annaprashan/annaprashan-12.jpg",
     ],

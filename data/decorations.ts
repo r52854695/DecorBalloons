@@ -91,9 +91,6 @@ export const decorations: Decoration[] = [
     photos: [
       "/images/decor/birthday/birthday-10.jpg",
       "/images/decor/baby-shower/baby-shower-05.jpg",
-      "/images/decor/welcome-baby/welcome-baby-03.jpg",
-      "/images/decor/adult/adult-03.jpg",
-      "/images/decor/anniversary/anniversary-19.jpg",
     ],
     seo: {
       title: "Balloon Arch Decoration in Patna",
@@ -290,10 +287,7 @@ export const decorations: Decoration[] = [
     setupTime: null,
     featured: false,
     photos: [
-      "/images/decor/birthday/birthday-11.jpg",
       "/images/decor/anniversary/anniversary-14.jpg",
-      "/images/decor/birthday/birthday-03.jpg",
-      "/images/decor/theme-birthday/theme-birthday-01.jpg",
       "/images/decor/baby-boy-theme/baby-boy-theme-06.jpg",
     ],
     seo: {
@@ -323,9 +317,6 @@ export const decorations: Decoration[] = [
     setupTime: null,
     featured: false,
     photos: [
-      "/images/decor/theme-birthday/theme-birthday-05.jpg",
-      "/images/decor/theme-birthday/theme-birthday-06.jpg",
-      "/images/decor/theme-birthday/theme-birthday-04.jpg",
       "/images/decor/theme-birthday/theme-birthday-07.jpg",
       "/images/decor/annaprashan/annaprashan-12.jpg",
     ],
