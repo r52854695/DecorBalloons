@@ -152,7 +152,6 @@ export const megaMenus: MegaMenu[] = [
         items: [
           fromCatalog("room-decoration"),
           fromCatalog("premium-decoration"),
-          fromCatalog("car-decoration"),
           fromCatalog("shop-decoration"),
         ],
       },
