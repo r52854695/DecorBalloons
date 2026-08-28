@@ -30,11 +30,11 @@ export function ProductCard({
     <Link
       href={`/contact?setup=${encodeURIComponent(product.slug)}`}
       className={cn(
-        "group block overflow-hidden rounded-[8px] border border-sand/80 bg-white transition-shadow duration-300 hover:shadow-[var(--shadow-raise)]",
+        "group flex flex-col overflow-hidden rounded-[8px] border border-sand/80 bg-white transition-shadow duration-300 hover:shadow-[var(--shadow-raise)]",
         className,
       )}
     >
-      <div className="relative aspect-4/5 overflow-hidden bg-cream">
+      <div className="relative aspect-4/5 shrink-0 overflow-hidden bg-cream">
         <Image
           src={product.image}
           alt={product.name}
@@ -54,7 +54,11 @@ export function ProductCard({
         </span>
       </div>
 
-      <div className="p-3">
+      {/* Flex column with the price pushed to the bottom. Ratings will exist
+          on some setups and not others, and without this the extra line shifts
+          the price down on rated cards only — leaving the prices in a shelf
+          visibly out of line with each other. */}
+      <div className="flex flex-1 flex-col p-3">
         <h3 className="line-clamp-2 min-h-[2.4em] text-[0.86rem] leading-snug text-ink">
           {product.name}
         </h3>
@@ -70,7 +74,7 @@ export function ProductCard({
             <span>({product.rating.count} reviews)</span>
           </p>
         )}
-        <div className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+        <div className="mt-auto flex flex-wrap items-baseline gap-x-2 gap-y-0.5 pt-1.5">
           <span className="text-[1.02rem] font-semibold text-ink">
             {formatINR(product.price)}
           </span>
