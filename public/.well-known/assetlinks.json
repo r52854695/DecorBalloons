@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.decorballoon.app",
+      "sha256_cert_fingerprints": [
+        "40:0B:8F:95:52:84:94:F7:69:4F:F8:B8:1A:82:DC:3E:9B:C8:75:1C:9A:C6:EC:C3:C0:C3:A6:E7:CB:64:BF:82"
+      ]
+    }
+  }
+]
