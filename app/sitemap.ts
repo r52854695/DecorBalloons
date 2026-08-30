@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/contact", priority: 0.8, freq: "yearly" },
     { path: "/faq", priority: 0.6, freq: "monthly" },
     { path: "/app", priority: 0.5, freq: "yearly" },
+    { path: "/areas", priority: 0.7, freq: "monthly" },
   ];
 
   return [

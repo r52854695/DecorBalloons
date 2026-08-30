@@ -116,6 +116,10 @@ export function Footer() {
           <p className="text-[0.78rem] leading-relaxed text-ink-faint">
             <span className="text-ink-muted">Serving </span>
             {business.serviceAreas.join(" · ")}
+            {" · "}
+            <Link href="/areas" className="underline">
+              all areas
+            </Link>
             <span className="text-ink-muted"> and across {business.city}.</span>
           </p>
         </div>

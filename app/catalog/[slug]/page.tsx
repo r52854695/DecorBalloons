@@ -22,8 +22,10 @@ export async function generateMetadata({
   const c = getCategory(slug);
   if (!c) return {};
   return buildMetadata({
-    title: `${c.name} in ${business.city}`,
-    description: `${c.blurb} ${c.products.length} setups available in ${business.city}, set up by our own team.`,
+    title: c.seoTitle ?? `${c.name} Decoration in ${business.city}`,
+    description:
+      c.seoDescription ??
+      `${c.blurb} ${c.products.length} setups available in ${business.city}, set up by our own team.`,
     path: `/catalog/${c.slug}`,
   });
 }

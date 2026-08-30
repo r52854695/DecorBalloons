@@ -81,6 +81,18 @@ export type Category = {
   name: string;
   /** Short line under the heading. */
   blurb: string;
+  /**
+   * Search title for this category's page.
+   *
+   * Written per category rather than generated as `${name} in Patna`, because
+   * the generated version produced things like "Kids Birthday in Patna" —
+   * missing the one word ("decoration") that the query actually contains.
+   * Deliberately no price: the prices in this file are placeholders, and a
+   * number in a title tag is what Google shows in the result.
+   */
+  seoTitle?: string;
+  /** Search description. Kept under ~155 characters so it is not truncated. */
+  seoDescription?: string;
   /** Theme filter chips shown above the row. "All" is added automatically. */
   themes?: string[];
   /**
@@ -111,6 +123,8 @@ export const categories: Category[] = [
     blurb: "Room, hall or terrace — set up before the guests arrive.",
     themes: ["Simple", "Premium", "Canopy", "Stage"],
     occasionName: "Birthday",
+    seoTitle: "Birthday Decoration in Patna — Home, Hall & Terrace Setups",
+    seoDescription: "Birthday balloon decoration in Patna. Room, hall and terrace setups installed by our own team, cleared away after. Same-day slots subject to availability.",
     products: [
       p("classic-birthday-room", "Classic Birthday Room Decoration", 1999, 2599, "1.5 hr", "/images/decor/birthday/birthday-07.jpg", "Best Seller", "Simple"),
       p("home-birthday-setup", "Home Birthday Decoration", 3199, 4299, "2.5 hr", "/images/decor/birthday/birthday-09.jpg", "Most Loved", "Premium"),
@@ -126,6 +140,8 @@ export const categories: Category[] = [
     slug: "premium-decoration",
     name: "Premium Decoration",
     blurb: "Bigger builds, fresh flowers and lighting.",
+    seoTitle: "Premium Balloon Decoration in Patna — Floral & Lit Setups",
+    seoDescription: "Premium balloon decoration in Patna with fresh flowers, lighting and large backdrops. Built and installed by our own team across the city.",
     products: [
       p("premium-gold-ring", "Premium Gold Ring Setup", 5499, 6999, "3 hr", "/images/decor/anniversary/anniversary-05.jpg", "Best Seller"),
       p("luxe-floral-stage", "Luxe Floral Stage", 6999, 8499, "3.5 hr", "/images/decor/anniversary/anniversary-24.jpg", "Most Loved"),
@@ -141,6 +157,8 @@ export const categories: Category[] = [
     blurb: "One theme, carried through every element.",
     themes: ["Football", "Aeroplane", "Jungle", "Princess", "Cartoon", "Krishna"],
     occasionName: "Kids Party",
+    seoTitle: "Kids Birthday Decoration in Patna — Themed Party Setups",
+    seoDescription: "Themed kids birthday decoration in Patna. Football, aeroplane, jungle, princess, cartoon and Krishna themes carried through backdrop, balloons and props.",
     products: [
       p("unicorn-theme", "Football Theme Decoration", 2799, 3799, "2 hr", "/images/decor/baby-boy-theme/baby-boy-theme-01.jpg", "Best Seller", "Football"),
       p("jungle-theme", "Jungle Theme Decoration", 2999, 3999, "2 hr", "/images/decor/baby-boy-theme/baby-boy-theme-03.jpg", "Most Loved", "Jungle"),
@@ -157,6 +175,8 @@ export const categories: Category[] = [
     name: "Annaprashan",
     blurb: "The rice ceremony, styled for the whole family.",
     occasionName: "Annaprashan",
+    seoTitle: "Annaprashan Decoration in Patna — Rice Ceremony Setups",
+    seoDescription: "Annaprashan and naming ceremony decoration in Patna. Traditional backdrops, rangoli and stage setups for the rice ceremony, installed at your home or hall.",
     products: [
       p("annaprashan-home", "Annaprashan Home Setup", 3799, 4899, "2.5 hr", "/images/decor/annaprashan/annaprashan-04.jpg", "Best Seller"),
       p("annaprashan-classic", "Annaprashan Decoration", 3499, 5499, "2 hr", "/images/decor/annaprashan/annaprashan-03.jpg", "Most Loved"),
@@ -172,6 +192,8 @@ export const categories: Category[] = [
     blurb: "Done inside the house, cleaned up after.",
     themes: ["Romantic", "Birthday", "Surprise"],
     occasionName: "Home Surprise",
+    seoTitle: "Room Decoration in Patna — Romantic & Surprise Setups",
+    seoDescription: "Room decoration in Patna for anniversaries, proposals and surprises. Candlelight, rose petals and balloon setups done inside your home and cleaned up after.",
     products: [
       p("romantic-room", "Romantic Room Setup", 2699, 3199, "2 hr", "/images/decor/surprise-birthday/surprise-birthday-03.jpg", "Best Seller", "Romantic"),
       p("candlelight-room", "Candlelight Dinner Setup", 3499, 4299, "2.5 hr", "/images/decor/surprise-birthday/surprise-birthday-05.jpg", "Most Loved", "Romantic"),
@@ -186,6 +208,8 @@ export const categories: Category[] = [
     name: "Anniversary",
     blurb: "For the evening, not the afternoon.",
     occasionName: "Anniversary",
+    seoTitle: "Anniversary Decoration in Patna — Romantic Balloon Setups",
+    seoDescription: "Anniversary balloon decoration in Patna. Heart backdrops, rose petals and candlelight setups for evenings at home, hotels or on a terrace.",
     products: [
       p("anniversary-classic", "Anniversary Decoration", 2999, 3499, "2.5 hr", "/images/decor/anniversary/anniversary-03.jpg", "Best Seller"),
       p("anniversary-premium", "Premium Anniversary Setup", 4399, 5499, "3 hr", "/images/decor/anniversary/anniversary-09.jpg", "Most Loved"),
@@ -200,6 +224,8 @@ export const categories: Category[] = [
     name: "Baby Shower",
     blurb: "Soft, warm and built to photograph well.",
     occasionName: "Baby Shower",
+    seoTitle: "Baby Shower Decoration in Patna — Godbharai & Welcome Baby",
+    seoDescription: "Baby shower and godbharai decoration in Patna. Pastel backdrops, balloon arches and seating corners for the mum-to-be, plus welcome-baby home setups.",
     products: [
       p("baby-shower-home", "Baby Shower at Home", 3199, 3999, "2.5 hr", "/images/decor/baby-shower/baby-shower-09.jpg", "Most Loved"),
       p("baby-shower-classic", "Baby Shower Decoration", 2299, 2999, "2.5 hr", "/images/decor/baby-shower/baby-shower-10.jpg", "Best Seller"),
@@ -214,6 +240,8 @@ export const categories: Category[] = [
     name: "Bride To Be",
     blurb: "Haldi, mehndi and the night before.",
     occasionName: "Wedding",
+    seoTitle: "Bride To Be Decoration in Patna — Haldi & Mehndi Setups",
+    seoDescription: "Haldi, mehndi and bride-to-be decoration in Patna. Marigold, floral and balloon setups for the days before the wedding, installed at home or venue.",
     products: [
       p("bride-to-be-classic", "Bride To Be Decoration", 2499, 3299, "2 hr", "/images/catalog/bride/bride-jewellery.jpg", "Best Seller"),
       p("haldi-setup", "Haldi Ceremony Setup", 2899, 3799, "2 hr", "/images/catalog/bride/haldi.jpg", "Trending"),
@@ -229,6 +257,8 @@ export const categories: Category[] = [
     blurb: "Openings, showrooms and office floors.",
     themes: ["Shop Opening", "Showroom", "Office"],
     occasionName: "Shop Opening",
+    seoTitle: "Shop Opening Decoration in Patna — Inauguration Setups",
+    seoDescription: "Shop opening and showroom decoration in Patna. Entrance balloon arches, ribbon-cutting setups and office decoration for inaugurations and launches.",
     products: [
       p("shop-opening", "Shop Opening Decoration", 6499, 8599, "3 hr", "/images/catalog/shop/ribbon-arch.jpg", "Trending", "Shop Opening"),
       p("shop-entrance", "Entrance Balloon Arch", 1999, 2499, "1.5 hr", "/images/decor/anniversary/anniversary-17.jpg", "Best Seller", "Shop Opening"),
@@ -243,6 +273,8 @@ export const categories: Category[] = [
     name: "Corporate Events",
     blurb: "On-brand, on-schedule, out before Monday.",
     occasionName: "Corporate Event",
+    seoTitle: "Corporate Event Decoration in Patna — Stage & Backdrops",
+    seoDescription: "Corporate event decoration in Patna. Stage setups, conference backdrops and office party decoration, installed on schedule and cleared the same night.",
     products: [
       p("corporate-stage", "Corporate Stage Setup", 8499, 10499, "3.5 hr", "/images/catalog/corporate/stage.jpg", "Trending"),
       p("office-party", "Office Party Decoration", 4499, 5499, "2.5 hr", "/images/decor/surprise-birthday/surprise-birthday-12.jpg", "Best Seller"),
@@ -257,6 +289,8 @@ export const categories: Category[] = [
     name: "Wedding",
     blurb: "Entrances, stages and photo corners.",
     occasionName: "Wedding",
+    seoTitle: "Wedding Decoration in Patna — Stage, Entrance & Reception",
+    seoDescription: "Wedding decoration in Patna. Mandap and reception stages, entrance arches, varmala setups and photo corners for weddings across the city.",
     products: [
       p("wedding-stage", "Wedding Stage Decoration", 12999, 15999, "5 hr", "/images/catalog/wedding/mandap.jpg", "Trending"),
       p("reception-setup", "Reception Decoration", 10499, 12999, "4 hr", "/images/catalog/wedding/hall.jpg", "Best Seller"),
