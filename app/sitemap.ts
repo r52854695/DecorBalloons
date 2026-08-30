@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.6, freq: "yearly" },
     { path: "/contact", priority: 0.8, freq: "yearly" },
     { path: "/faq", priority: 0.6, freq: "monthly" },
+    { path: "/app", priority: 0.5, freq: "yearly" },
   ];
 
   return [
