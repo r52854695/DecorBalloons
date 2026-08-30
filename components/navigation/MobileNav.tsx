@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { InstallApp } from "@/components/pwa/InstallApp";
 import { useMotionBudget } from "@/components/motion/useMotionBudget";
 import { openPartyPal } from "@/components/chat/bus";
 import { track } from "@/lib/analytics/events";
@@ -168,6 +169,8 @@ export function MobileNav({ onNavigate }: { onNavigate: () => void }) {
       </div>
 
       <div className="mt-6 flex flex-col gap-3 pt-2">
+        {/* Only appears when the browser reports the site is installable. */}
+        <InstallApp />
         <Button href="/contact" variant="primary" size="lg" arrow onClick={onNavigate}>
           🎈 Plan my celebration
         </Button>

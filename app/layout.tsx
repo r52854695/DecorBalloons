@@ -5,6 +5,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { CityProvider } from "@/components/city/CityProvider";
 import { CityPicker } from "@/components/city/CityPicker";
+import { ServiceWorker } from "@/components/pwa/ServiceWorker";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { MobileStickyCTA } from "@/components/ui/MobileStickyCTA";
@@ -51,6 +52,20 @@ const parisienne = Parisienne({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+
+  /*
+   * iOS ignores the web app manifest for "Add to Home Screen" behaviour and
+   * reads these instead. Without them the site opens in Safari chrome even
+   * after someone installs it, which makes the install pointless on iPhone.
+   */
+  appleWebApp: {
+    capable: true,
+    title: business.name,
+    statusBarStyle: "default",
+  },
+  icons: {
+    apple: "/icons/apple-touch-icon.png",
+  },
   title: {
     default: `${business.name} | Premium Balloon Decoration in ${business.city}`,
     template: `%s | ${business.name}`,
@@ -122,6 +137,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <PartyPal />
           <MobileStickyCTA />
           <CityPicker />
+          <ServiceWorker />
         </CityProvider>
       </body>
     </html>
