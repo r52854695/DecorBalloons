@@ -148,6 +148,7 @@ export function MobileNav({ onNavigate }: { onNavigate: () => void }) {
           {[
             { label: "Gallery", href: "/gallery" },
             { label: "About", href: "/about" },
+            { label: "Get the app", href: "/app" },
           ].map((l, i) => (
             <motion.li
               key={l.href}

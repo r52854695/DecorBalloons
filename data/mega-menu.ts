@@ -216,6 +216,13 @@ export const megaMenus: MegaMenu[] = [
             accent: "occ-anniversary",
           },
           {
+            label: "Get the App",
+            href: "/app",
+            description: "Put us on your home screen, or download for Android.",
+            photo: occasionPhoto("birthday"),
+            accent: "rose",
+          },
+          {
             label: "Talk to Party Pal",
             action: "partypal",
             description: "Answer a few questions, get a decoration plan.",

@@ -129,6 +129,9 @@ export function Footer() {
             © {year} {business.name}. All rights reserved.
           </p>
           <p className="flex flex-wrap gap-x-5 gap-y-1">
+            <Link href="/app" className="link-draw hover:text-ink">
+              Get the app
+            </Link>
             <Link href="/faq" className="link-draw hover:text-ink">
               FAQ
             </Link>
