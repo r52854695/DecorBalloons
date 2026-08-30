@@ -11,11 +11,15 @@
 
 export const business = {
   /**
-   * @verify BRAND NAME — the brief's prose says "DecorBalloon" (singular),
-   * but the supplied logo artwork reads "DECOR Balloons" and the repo README
-   * says "DecorBalloons". The logo is the authoritative artefact and sits
-   * directly beside this wordmark in the navbar, so plural is used.
-   * Change this one value to flip it everywhere (titles, schema, OG, copy).
+   * CONFIRMED by the client: plural, "DecorBalloons".
+   *
+   * This was open for a while — the brief's prose said "DecorBalloon", the
+   * logo artwork reads "DECOR Balloons", and the domain that was eventually
+   * bought is decorballoon.in, singular. The domain is just an address; the
+   * brand is plural and matches the logo sitting beside this wordmark.
+   *
+   * Still the single source of truth: change this one value and every title,
+   * schema node, OG tag and line of copy follows.
    */
   name: "DecorBalloons",
   legalName: "DecorBalloons",

@@ -43,17 +43,14 @@ completely lost — but anyone who does not complete that handoff is gone.
 To fix: create a webhook (Zapier or Make → Gmail / Google Sheet / WhatsApp),
 add `LEAD_WEBHOOK_URL` as a **Secret** in Vercel, redeploy.
 
-### The brand name contradicts the domain
+---
 
-The domain is **decorballoon.in** — singular. The site says
-**DecorBalloons** — plural — everywhere, and the client's logo does too.
-Both are now public and the mismatch is visible.
+### Resolved
 
-This was flagged from the first day as `@verify BRAND NAME`: the brief's
-prose said singular, the logo said plural. The domain purchase has now
-answered it one way. Someone has to decide which is correct.
-
-To fix: one value in `data/business.ts`. The whole site follows.
+**Brand name — settled as plural, "DecorBalloons".** The domain is
+`decorballoon.in` (singular) but that is only an address; the brand matches
+the logo. No change needed, and it should not be "fixed" later by someone
+who spots the difference.
 
 ---
 
