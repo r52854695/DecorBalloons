@@ -1,0 +1,41 @@
+{
+  "packageId": "in.decorballoon.app",
+  "host": "www.decorballoon.in",
+  "name": "DecorBalloons",
+  "launcherName": "DecorBalloons",
+  "display": "standalone",
+  "themeColor": "#FAF6F1",
+  "themeColorDark": "#101D30",
+  "navigationColor": "#FAF6F1",
+  "navigationColorDark": "#101D30",
+  "navigationDividerColor": "#E6DED4",
+  "navigationDividerColorDark": "#101D30",
+  "backgroundColor": "#FAF6F1",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://www.decorballoon.in/icons/icon-512.png",
+  "maskableIconUrl": "https://www.decorballoon.in/icons/icon-maskable-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android.keystore",
+    "alias": "decorballoon"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    { "name": "Book a setup", "shortName": "Book", "url": "/contact", "chosenIconUrl": "https://www.decorballoon.in/icons/icon-192.png" },
+    { "name": "Our work", "shortName": "Gallery", "url": "/gallery", "chosenIconUrl": "https://www.decorballoon.in/icons/icon-192.png" }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://www.decorballoon.in/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": { "enabled": false },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://www.decorballoon.in/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": []
+}
