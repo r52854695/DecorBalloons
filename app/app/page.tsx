@@ -14,11 +14,16 @@ export const metadata: Metadata = buildMetadata({
 /**
  * The "get the app" page.
  *
- * Two routes are offered and the order is deliberate. Installing the web app
- * is first because it takes one tap, works on both iPhone and Android, and
- * updates itself. The APK is second because sideloading on Android means
- * walking past a security warning, and pretending otherwise would just lose
- * people at the scary screen with no explanation.
+ * Two genuinely different things are offered, and the order is deliberate.
+ *
+ * The web app is first because it takes one tap, works on iPhone as well as
+ * Android, and updates itself. The Android download is a real native app —
+ * React Native, its own screens and navigation — for people who want an app
+ * rather than a shortcut. It is second because sideloading means walking past
+ * a security warning, and hiding that just loses people at the scary screen.
+ *
+ * iPhone gets no native build: there is no way to distribute an iOS app
+ * outside the App Store, so the web app is the honest answer there.
  */
 export default function AppPage() {
   return (
@@ -66,8 +71,9 @@ export default function AppPage() {
               Download the APK
             </h2>
             <p className="mt-3 text-[0.88rem] leading-relaxed text-ink-muted">
-              An installable Android file, if you would rather have it that way.
-              Same app — it just arrives as a download instead.
+              A proper Android app — not the website in a wrapper. Browse setups,
+              search, and send an enquiry, with what you have already looked at
+              kept for when the signal drops.
             </p>
 
             <a
@@ -77,6 +83,9 @@ export default function AppPage() {
             >
               ⬇ Download for Android
             </a>
+            <p className="mt-2 text-center text-[0.72rem] text-ink-faint">
+              42 MB · Android 7 and above
+            </p>
 
             <div className="mt-5 space-y-2 border-t border-sand pt-4 text-[0.8rem] leading-relaxed text-ink-muted">
               <p className="font-medium text-ink">Android will warn you first.</p>

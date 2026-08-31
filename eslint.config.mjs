@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+
+    // Android build tooling. Plain Node CommonJS scripts and generated Gradle
+    // output — not part of the Next app, and linting them with the Next
+    // TypeScript rules only produces noise about require().
+    "android/**",
   ]),
 ]);
 
