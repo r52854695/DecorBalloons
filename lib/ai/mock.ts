@@ -55,7 +55,13 @@ export class MockProvider implements AIProvider {
     ).slice(0, 6);
 
     const bits: string[] = [];
-    if (brief.venue) bits.push(`at your ${brief.venue.toLowerCase()}`);
+    if (brief.venue) {
+      // The venue chips are phrases ("At home"), not nouns, so a blind
+      // "at your ..." produces "at your at home" in a sentence the visitor
+      // reads. Leave an answer that already carries a preposition alone.
+      const venue = brief.venue.toLowerCase().trim();
+      bits.push(/^(at|in|on)\b/.test(venue) ? venue : `at your ${venue}`);
+    }
     if (brief.guests) bits.push(`for around ${brief.guests} guests`);
     const context = bits.length ? ` ${bits.join(", ")}` : "";
 

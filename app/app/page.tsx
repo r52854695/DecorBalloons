@@ -72,8 +72,8 @@ export default function AppPage() {
             </h2>
             <p className="mt-3 text-[0.88rem] leading-relaxed text-ink-muted">
               A proper Android app — not the website in a wrapper. Browse setups,
-              search, and send an enquiry, with what you have already looked at
-              kept for when the signal drops.
+              search, plan with Party Pal and send an enquiry, with what you have
+              already looked at kept for when the signal drops.
             </p>
 
             <a
